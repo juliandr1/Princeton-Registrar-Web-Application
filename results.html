@@ -1,0 +1,24 @@
+ <table>
+        <tr>
+          <th>ClassId</th>
+          <th style = "text-align: start">Dept</th>
+          <th style = "text-align: start">Num</th>
+          <th style = "text-align: start">Area</th>
+          <th style = "text-align: start">Title</th>
+        </tr>
+
+      {% if courses|length != 0: %}
+        {% for course in courses: %}
+        <tr>
+          <td>
+            <a href = "{{ url_for('course_details', clsid = course.get_clsid\
+())}}">{{course.get_clsid()}}</a>
+          </td>
+          <td>{{course.get_dept()}}</td>
+          <td>{{course.get_num()}}</td>
+          <td>{{course.get_area()}}</td>
+          <td>{{course.get_title()}}</td>
+        </tr>
+        {% endfor %}
+      {% endif %}
+    </table>

@@ -11,26 +11,26 @@
       <table>
          <tr>
          <td align="right">Dept:</td>
-         <td><input type="text" name="dept" value={{prev_dept}}><br></td>
+         <td><input type="text" name="dept" id="dept" value={{prev_dept}}><br></td>
          </tr>
 
          <tr>
          <td align="right">Number:</td>
          <td>
-            <input type="text" name="num"
+            <input type="text" name="num" id="num"
                value={{prev_num}}><br>
          </td>
          </tr>
 
          <tr>
          <td align="right">Area:</td>
-         <td><input type=text name="area" value={{prev_area}}><br></td>
+         <td><input type=text name="area" id="area" value={{prev_area}}><br></td>
          </tr>
 
          <tr>
          <td align="right">Title:</td>
          <td>
-            <input type="text" name="title" value={{prev_title}}><br>
+            <input type="text" name="title" id="title" value={{prev_title}}><br>
          </td>
          </tr>
 
@@ -39,11 +39,10 @@
          <td><input type="submit"></td>
          </tr>
 
-      </table>
-   </form>
-      
-	<hr>
-      <table>
+         <div class ="container-fluid" id="resultsPage">
+           {%include 'results.html' %}
+         </div>
+        <!--      <table>
         <tr>
           <th>ClassId</th>
           <th style = "text-align: start">Dept</th>
@@ -66,7 +65,57 @@
         {% endfor %}
       {% endif %}
     </table>
-      <hr>
+
+-->
+
       {% include 'footer.html' %}
-    </body>
+      
+      <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+      <!-- <script src="static/jquery.min.js"></script> -->
+      <script>
+        'use strict' ;
+
+        function handleResponse(response)
+        {
+            $('#resultsPage').html(response)
+        }
+        let request = null
+
+        function getResults()
+        {
+            let dept = $('#dept').val();
+            let num = $('#num').val();
+            let area = $('#area').val();
+            let title = $('#tile').val();
+            dept = encodeURIComponent(dept);
+            num = encodeURIComponent(num);
+            area = encodeURIComponent(area);
+            title = encodeURICOmponent(title);
+            let url = '/searchResults' + '?dept='
+                + dept + '?num=' + num + '?area=' +
+                area + '?title=' + title
+            if (request != null)
+                request.abort();
+            request = $.ajax(
+                {
+                    type: 'GET',
+                    url: url,
+                    success: handleResponse
+                }
+            );
+        }
+
+        function setup()
+        {
+            $('#dept').on('input', getResults);
+            $('#num').on('input', getResults);
+            $('#area').on('input', getResults);
+            $('#title').on('input', getResults);
+        }
+        $('document').ready(setup);
+
+        </script>
+        
+  </body>
 </html>
