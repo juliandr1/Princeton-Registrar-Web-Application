@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registrar></title>
+   </head>
+  <body>
+    {% include 'header.html' %}
+   <h2>Class Search</h2>
+    <hr>
+    <form action = "/course_search" method = "get">
+      <table>
+         <tr>
+         <td align="right">Dept:</td>
+         <td><input type="text" name="dept" value={{prev_dept}}><br></td>
+         </tr>
+
+         <tr>
+         <td align="right">Number:</td>
+         <td>
+            <input type="text" name="num"
+               value={{prev_num}}><br>
+         </td>
+         </tr>
+
+         <tr>
+         <td align="right">Area:</td>
+         <td><input type=text name="area" value={{prev_area}}><br></td>
+         </tr>
+
+         <tr>
+         <td align="right">Title:</td>
+         <td>
+            <input type="text" name="title" value={{prev_title}}><br>
+         </td>
+         </tr>
+
+         <tr>
+         <td></td>
+         <td><input type="submit"></td>
+         </tr>
+
+      </table>
+   </form>
+      
+	<hr>
+      <table>
+        <tr>
+          <th>ClassId</th>
+          <th style = "text-align: start">Dept</th>
+          <th style = "text-align: start">Num</th>
+          <th style = "text-align: start">Area</th>
+          <th style = "text-align: start">Title</th>
+        </tr>
+        
+      {% if courses|length != 0: %}
+        {% for course in courses: %}
+        <tr>
+          <td>
+            <a href = "{{ url_for('course_details', clsid = course.get_clsid())}}">{{course.get_clsid()}}</a>
+          </td>
+          <td>{{course.get_dept()}}</td>
+          <td>{{course.get_num()}}</td>
+          <td>{{course.get_area()}}</td>
+          <td>{{course.get_title()}}</td>
+        </tr> 
+        {% endfor %}
+      {% endif %}
+    </table>
+      <hr>
+      {% include 'footer.html' %}
+    </body>
+</html>

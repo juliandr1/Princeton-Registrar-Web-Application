@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Registrar></title>
+   </head>
+   <body>
+      {% include 'header.html' %}
+      <hr>
+      <h2> <strong>Class Details (class id {{classid}})</strong></h2>
+      <strong>Course Id: </strong>{{course_detail.get_clsdetails()[0]}}<br>
+      <strong>Days: </strong>{{course_detail.get_clsdetails()[1]}}<br>
+      <strong>Start Time: </strong>{{course_detail.get_clsdetails()[2]}}
+      <br>
+      <strong>End Time: </strong>{{course_detail.get_clsdetails()[3]}}<br>
+      <strong>Building: </strong>{{course_detail.get_clsdetails()[4]}}<br>
+      <strong>Room: </strong>{{course_detail.get_clsdetails()[5]}}<br>
+      <hr>
+      <h2> <strong>Course Details (course id {{course_detail.get_clsdetails()[0]}})</strong></h2>
+      {% for dept in course_detail.get_depts(): %}
+         <strong>Dept and Number: </strong>{{dept}}<br>
+      {% endfor %}
+      <strong>Area: </strong>{{course_detail.get_crsdetails()[0]}}<br>
+      <strong>Title: </strong>{{course_detail.get_crsdetails()[1]}}<br>
+      <strong>Description: </strong>{{course_detail.get_crsdetails()[2]}}<br>
+      <strong>Prerequisites: </strong>{{course_detail.get_crsdetails()[3]}}<br>
+      {% for prof in course_detail.get_profs(): %}
+         <strong>Professor: </strong>{{prof}}<br>
+      {% endfor %}
+      <hr>
+      <span>Click here to do <a href="javascript:history.back()">another class search</a> </span>
+      <hr>
+      {% include 'footer.html' %}
+   </body>
+</html>
