@@ -1,121 +1,99 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Registrar></title>
-   </head>
-  <body>
-    {% include 'header.html' %}
-   <h2>Class Search</h2>
-    <hr>
-    <form action = "/course_search" method = "get">
-      <table>
-         <tr>
-         <td align="right">Dept:</td>
-         <td><input type="text" name="dept" id="dept" value={{prev_dept}}><br></td>
-         </tr>
-
-         <tr>
-         <td align="right">Number:</td>
-         <td>
-            <input type="text" name="num" id="num"
-               value={{prev_num}}><br>
-         </td>
-         </tr>
-
-         <tr>
-         <td align="right">Area:</td>
-         <td><input type=text name="area" id="area" value={{prev_area}}><br></td>
-         </tr>
-
-         <tr>
-         <td align="right">Title:</td>
-         <td>
-            <input type="text" name="title" id="title" value={{prev_title}}><br>
-         </td>
-         </tr>
-
-         <tr>
-         <td></td>
-         <td><input type="submit"></td>
-         </tr>
-
-         <div class ="container-fluid" id="resultsPage">
-           {%include 'results.html' %}
-         </div>
-        <!--      <table>
+ <head>
+   <title>Registrar></title>
+  </head>
+ <body>
+   {% include 'header.html' %}
+  <h2>Class Search</h2>
+   <hr>
+   <form method = "get">
+     <table>
         <tr>
-          <th>ClassId</th>
-          <th style = "text-align: start">Dept</th>
-          <th style = "text-align: start">Num</th>
-          <th style = "text-align: start">Area</th>
-          <th style = "text-align: start">Title</th>
+        <td align="right">Dept:</td>
+        <td><input type="text" name="dept" id = "deptInput" autofocus><br></td>
         </tr>
-        
-      {% if courses|length != 0: %}
-        {% for course in courses: %}
+ 
         <tr>
-          <td>
-            <a href = "{{ url_for('course_details', clsid = course.get_clsid())}}">{{course.get_clsid()}}</a>
-          </td>
-          <td>{{course.get_dept()}}</td>
-          <td>{{course.get_num()}}</td>
-          <td>{{course.get_area()}}</td>
-          <td>{{course.get_title()}}</td>
-        </tr> 
-        {% endfor %}
-      {% endif %}
-    </table>
-
--->
-
-      {% include 'footer.html' %}
+        <td align="right">Number:</td>
+        <td>
+           <input type="text" name="num" id = "numInput" autofocus><br>
+        </td>
+        </tr>
+ 
+        <tr>
+        <td align="right">Area:</td>
+        <td><input type=text name="area" id = "areaInput" autofocus><br></td>
+        </tr>
+ 
+        <tr>
+        <td align="right">Title:</td>
+        <td>
+           <input type="text" name="title" id = "titleInput" autofocus><br>
+        </td>
+        </tr>
+ 
+        <tr>
+        <td></td>
+        </tr>
+ 
+     </table>
+  </form>
+   <hr>
+  
+   <p id="resultsParagraph"></p>
+  
+   <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       
-      <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-      <!-- <script src="static/jquery.min.js"></script> -->
-      <script>
-        'use strict' ;
-
-        function handleResponse(response)
-        {
-            $('#resultsPage').html(response)
-        }
-        let request = null
-
-        function getResults()
-        {
-            let dept = $('#dept').val();
-            let num = $('#num').val();
-            let area = $('#area').val();
-            let title = $('#tile').val();
-            dept = encodeURIComponent(dept);
-            num = encodeURIComponent(num);
-            area = encodeURIComponent(area);
-            title = encodeURICOmponent(title);
-            let url = '/searchResults' + '?dept='
-                + dept + '?num=' + num + '?area=' +
-                area + '?title=' + title
-            if (request != null)
-                request.abort();
-            request = $.ajax(
-                {
-                    type: 'GET',
-                    url: url,
-                    success: handleResponse
-                }
-            );
-        }
-
-        function setup()
-        {
-            $('#dept').on('input', getResults);
-            $('#num').on('input', getResults);
-            $('#area').on('input', getResults);
-            $('#title').on('input', getResults);
-        }
-        $('document').ready(setup);
-
-        </script>
-        
-  </body>
+   <script>
+       'use strict';
+ 
+       function handleResponse(response) {
+           $('#resultsParagraph').html(response);
+       }
+ 
+       let request = null;
+ 
+       function getResults() {
+          
+           let dept = $('#deptInput').val();
+           dept = encodeURIComponent(dept);
+           let num = $('#numInput').val();
+           num = encodeURIComponent(num);
+           let area = $('#areaInput').val();
+           area = encodeURIComponent(area);
+           let title = $('#titleInput').val();
+           title = encodeURIComponent(title);
+ 
+           let url = '/course_results?dept=' + dept
+           url += '&num=' + num;
+           url += '&area=' + area;
+           url += '&title=' + title;
+          
+           if (request != null)
+               request.abort();
+          
+          
+           request = $.ajax(
+               {
+                   type: 'GET',
+                   url: url,
+                   success: handleResponse
+               }
+           );
+       }
+ 
+       function setup() {
+           $('#deptInput').on('input', getResults)
+           $('#numInput').on('input', getResults)
+           $('#areaInput').on('input', getResults)
+           $('#titleInput').on('input', getResults)
+           getResults()
+       }
+ 
+       $('document').ready(setup);
+ 
+   </script>
+    
+   </body>
 </html>
