@@ -32,16 +32,12 @@
            <input type="text" name="title" id = "titleInput" autofocus><br>
         </td>
         </tr>
- 
-        <tr>
-        <td></td>
-        </tr>
- 
      </table>
   </form>
    <hr>
-  
-   <p id="resultsParagraph"></p>
+
+<table id = "courses">
+</table>
   
    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       
@@ -49,7 +45,7 @@
        'use strict';
  
        function handleResponse(response) {
-           $('#resultsParagraph').html(response);
+           $('#courses').html(response);
        }
  
        let request = null;
@@ -72,7 +68,6 @@
           
            if (request != null)
                request.abort();
-          
           
            request = $.ajax(
                {
