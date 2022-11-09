@@ -47,9 +47,12 @@ def course_results():
    html_code += '<th style = "text-align: start">Area</th>'
    html_code += '<th style = "text-align: start">Title</th></tr>'
 
-   pattern = '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+   pattern = '<tr><td><a href = "%s" target = "_blank">%s</a></td>'
+   pattern += '<td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
+
    for course in courses:
-       html_code += pattern % (course.get_clsid(), course.get_dept(), course.get_num(), course.get_area(), course.get_title())
+       url = flask.url_for('course_details', clsid = course.get_clsid())
+       html_code += pattern % (url, course.get_clsid(), course.get_dept(), course.get_num(), course.get_area(), course.get_title())
 
    response = flask.make_response(html_code)
    return response
