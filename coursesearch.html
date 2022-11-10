@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html>
  <head>
-   <title>Registrar></title>
+   <title>Registrar's Office: Class Search></title>
+   <meta name="viewport"
+   content="width=device-width, initial-scale=1">
+   <link rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2/dist/css/bootstrap.min.css">
   </head>
  <body>
-   {% include 'header.html' %}
-  <h2>Class Search</h2>
-   <hr>
-   <form method = "get">
-     <table>
-        <tr>
-        <td align="right">Dept:</td>
-        <td><input type="text" name="dept" id = "deptInput" autofocus><br></td>
-        </tr>
- 
-        <tr>
-        <td align="right">Number:</td>
-        <td>
-           <input type="text" name="num" id = "numInput" autofocus><br>
-        </td>
-        </tr>
- 
-        <tr>
-        <td align="right">Area:</td>
-        <td><input type=text name="area" id = "areaInput" autofocus><br></td>
-        </tr>
- 
-        <tr>
-        <td align="right">Title:</td>
-        <td>
-           <input type="text" name="title" id = "titleInput" autofocus><br>
-        </td>
-        </tr>
-     </table>
-  </form>
-   <hr>
+   <div class="container-fluid" style="background-color: #295078; color: white">
+     {% include 'header.html' %}
+   <div class="row">
+     <div class="col-sm-3">
+        <input class="form-control" type="text" name="dept"
+               id="deptInput" placeholder="Department" autofocus/>
+     </div>
 
-<table id = "courses">
-</table>
+     <div class="col-sm-3">
+       <input class="form-control" type="text" name="num"
+              id = "numInput" placeholder="Number" autofocus/>
+       </div>
+
+     <div class="col-sm-3">
+       <input class="form-control" type="text" name="area"
+              id = "areaInput" placeholder="Area" autofocus/>
+       </div>
+
+     <div class="col-sm-3">
+       <input class="form-control" type="text" name="title"
+              id = "titleInput" placeholder="Title" autofocus/>
+     </div>
+   </div>
+   <br>
+   </div>
+   <div class="container-fluid" id="courses">
+     { include '' %}
+   </div>
+
+    {% include 'footer.html' %}
+
   
    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       

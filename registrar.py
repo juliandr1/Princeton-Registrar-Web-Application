@@ -56,7 +56,8 @@ def course_results():
 
    response = flask.make_response(html_code)
    return response
- 
+    
+
 @app.route("/course_details", methods = ['GET'])
 def course_details():
    classid = flask.request.args.get("clsid")
