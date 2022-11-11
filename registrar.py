@@ -40,13 +40,13 @@ def course_results():
        response = flask.make_response(html_code)
        return response
  
+   html_code = '<thead bgcolor = "#f2f2f2"><tr><th>ClassId</th>'
+   html_code += '<th>Dept</th>'
+   html_code += '<th>Num</th>'
+   html_code += '<th>Area</th>'
+   html_code += '<th>Title</th></tr></thead><tbody>'
 
-   html_code = '<tr><th>ClassId</th>'
-   html_code += '<th style = "text-align: start">Dept</th>'
-   html_code += '<th style = "text-align: start">Num</th>'
-   html_code += '<th style = "text-align: start">Area</th>'
-   html_code += '<th style = "text-align: start">Title</th></tr>'
-
+   html_code += "<tr></tr>"
    pattern = '<tr><td><a href = "%s" target = "_blank">%s</a></td>'
    pattern += '<td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>'
 
@@ -54,6 +54,7 @@ def course_results():
        url = flask.url_for('course_details', clsid = course.get_clsid())
        html_code += pattern % (url, course.get_clsid(), course.get_dept(), course.get_num(), course.get_area(), course.get_title())
 
+   html_code += '</tbody>'
    response = flask.make_response(html_code)
    return response
     
