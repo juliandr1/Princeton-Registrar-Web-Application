@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Registrar></title>
-   </head>
+    <title>Registrar's Office: Error></title>
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2/dist/css/bootstrap.min.css">
+    <title>Registrar\'s Office Error</title>
+ </head>
   <body>
-    {% include 'header.html' %}
-    {{error_msg}}
-  <hr>
+
+    <div class="container-fluid" style="background-color: #295078; color: white">
+      <h1>
+        <center>
+          Registrar's Office: Error
+          </center>
+      </h1>
+   </div>
+   <br>
+   <div class = "container-fluid">{{error_msg}}</div>
+   <br>
     {% include 'footer.html' %}
    </body>
 </html>
