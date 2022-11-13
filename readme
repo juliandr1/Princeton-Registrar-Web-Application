@@ -3,6 +3,9 @@ juliandr_noahkb
 Julian Rodriguez, Noah Bereketab
 
 Julian:
+I worked on registrar.py and course_search.html in order to get the dynamic search to work, so that we did not need
+a submit button. I used javascript to write the script for this. 
+I also worked on errorpage.html that will show an error page pertaining to the particular error.
 
 Noah:
 I specifically worked on making coursesearch.html and coursedetails.html respond to browser window size and better aesteically. I did this by utilizing bootstrap. For coursesearch this included designing the header, having a placeholder for Department, Number, Area, and Title, and making edits to the text and spacing. For coursedetails.html this included designing its header and making edits to the text and spacing. For both headers of coursesearch.html and coursedeatils.html I created html files header.html and header_details.html. We utilized my implementaiton of
@@ -17,7 +20,10 @@ Materials, Assignment 2 materials, Assignment 3 materials, bootsrap tutorial
 Time Spent: 7 Hours
 
 Julian Assessment:
-
+Although this assignment was not difficult, it provided a good intro into javascript and its power in making web pages.
+This assignment is very applicable to our project where we also have a search bar that should implement the dynamic search element.
+This project was also a good intro to bootstrap, that is also extremely applicable in the design of our web page UI, which we hope
+to make aesteically pleasing.
 
 Noah Assessment:
 
