@@ -26,4 +26,16 @@ This project was also a good intro to bootstrap, that is also extremely applicab
 to make aesteically pleasing.
 
 Noah Assessment:
+This assignment did help me learn a lot. I feel like this was a great learning experience in making web pages. I gained more 
+experience with html and specifically bootstrap where I did a lot of research. This is really applicable to our project
+right now as we utilize boostrap. I have no suggestions regarding improvements.
 
+Notes:
+
+Course.py:
+Too many arguments (6/5). These arguments are needed for this object
+and doesnt make sense to make two of these objects
+
+Registrar.py
+We need the try to check, but never use the exception as we have a
+custom html error message.
