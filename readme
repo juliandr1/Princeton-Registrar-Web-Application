@@ -1,0 +1,23 @@
+juliandr_noahkb
+
+Julian Rodriguez, Noah Bereketab
+
+Julian:
+
+Noah:
+I specifically worked on making coursesearch.html and coursedetails.html respond to browser window size and better aesteically. I did this by utilizing bootstrap. For coursesearch this included designing the header, having a placeholder for Department, Number, Area, and Title, and making edits to the text and spacing. For coursedetails.html this included designing its header and making edits to the text and spacing. For both headers of coursesearch.html and coursedeatils.html I created html files header.html and header_details.html. We utilized my implementaiton of
+search_reg_details and search_reg in Database.py. I was involved in
+correcting our program style using the pylint tool.
+
+Outside Help: N/A
+
+Additional Sources: Lecture Slides, Lecture Programs, Assignment 1
+Materials, Assignment 2 materials, Assignment 3 materials, bootsrap tutorial
+
+Time Spent: 7 Hours
+
+Julian Assessment:
+
+
+Noah Assessment:
+
